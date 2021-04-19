@@ -1,0 +1,140 @@
+{
+
+    "categories": [
+   
+        { "id": 1, 
+            "type": "tech"
+           },
+           { "id": 2, 
+            "type": "fashion"
+           },
+           { "id": 3, 
+            "type": "apparels"
+           },
+           { "id": 4, 
+            "type": "reading"
+           }		
+        ],
+
+    "products": [
+      {
+          "name": "Camera",
+          "category": "tech",
+          "image": "",
+          "desc": "A very good quality",
+          "price": 1000,
+          "productId": 1,
+          "bestSeller": true
+      },
+      {
+        "name": "iphone 11 Pro",
+        "category": "tech",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 1200,
+        "productId": 1,
+        "bestSeller": true
+    },
+    {
+        "name": "Apple Airpods Pro",
+        "category": "tech",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 1000,
+        "productId": 1,
+        "bestSeller": true
+    },
+      {
+          "name": "glasses",
+          "category": "fashion",
+          "image": "./assets/Products/glasses.jpg",
+          "desc": "A very good quality",
+          "price": 500  ,
+          "productId": 2,
+          "bestSeller": true
+      },
+      {
+          "name": "shirt",
+          "category": "apparels",
+          "image": "",
+          "desc": "A very good quality",
+          "price": 50  ,
+          "productId": 3,
+          "bestSeller": false
+      },
+      {
+        "name": "pant",
+        "category": "apparels",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 50  ,
+        "productId": 3,
+        "bestSeller": false
+    },
+    {
+        "name": "t-shirt",
+        "category": "apparels",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 50  ,
+        "productId": 3,
+        "bestSeller": false
+    }, 
+      {
+        "name": "The girl in room 105",
+        "category": "reading",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 30,
+        "productId": 4,
+        "bestSeller": true
+    },
+    {
+        "name": "One indian girl",
+        "category": "reading",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 30,
+        "productId": 4,
+        "bestSeller": true
+    },
+    {
+        "name": "2 States",
+        "category": "reading",
+        "author": "Chetan Bhagat",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 30,
+        "productId": 4,
+        "bestSeller": false
+    },
+    {
+        "name": "Five feet apart",
+        "category": "reading",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 30,
+        "productId": 4,
+        "bestSeller": true
+    },
+    {
+        "name": "The fault in our stars",
+        
+        "category": "reading",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 30,
+        "productId": 4,
+        "bestSeller": true
+    },
+    {
+        "name": "Revolution 2020",
+        "category": "reading",
+        "image": "",
+        "desc": "A very good quality",
+        "price": 30,
+        "productId": 4,
+        "bestSeller": true
+    }
+  ]
+}

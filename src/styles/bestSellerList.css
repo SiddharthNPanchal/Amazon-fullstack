@@ -1,0 +1,12 @@
+.bestSellerList {
+  display: flex;
+  flex: 0 0 auto;
+  /* flex-direction: column; */
+  /* background-color: rgb(83, 11, 11); */
+  height: 450px;
+  width: 300px;
+  font-weight: bold;
+  /* padding: 100px; */
+  /* margin-left: 500px; */
+  /* margin-right: 5px; */
+}
