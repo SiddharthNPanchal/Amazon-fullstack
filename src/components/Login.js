@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../assets/amazon-logo.png"
+// import localStorage from "local-storage"
+// import sessionStorage from "session-storage"
 import "../styles/signin.css"
 function Signin() {
 
@@ -15,16 +17,48 @@ function Signin() {
     let [passwordError, setPasswordError] = useState({color:"black", display:"none"})
     let [passwordBorder, setPasswordBorder] = useState("inputText")
     let [passwordErrorMessage, setPasswordErrorMessage] = useState("")
+    let [loginError, setLoginError] = useState(0)
 
-    const signup = ()=>{
+    const login = ()=>{
         if(validate()){
-            
+            fetch("http://localhost:8080/login",{
+                method:"POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  body:JSON.stringify({
+                      email: email,
+                      password: password
+                  })
+            }).then(res=>{
+                if(res.status==401){
+                    setLoginError(401)
+                    alert("True")
+                    return loginError
+                }
+                else{
+                    setLoginError(200)
+                    return res.json()
+                }
+                
+            }).then(res=>{
+                if(res==401){
+                    console.log(res)
+                }
+                else{
+                    window.location.href = "http://localhost:3000"
+                    sessionStorage.setItem("name",  res.body[0][0].name)
+                    sessionStorage.setItem("email",  res.body[0][0].email)                    
+                    console.log(sessionStorage.getItem("name"))
+                    alert(`Welcome, ${res.body[0][0].name}`)
+                }
+            }).catch(err=>alert(err))
         }
     }
-
     const validate = () => {
         
-        let emailFlag = false;
+        let emailFlag = false;  
         let passwordFlag = false;
     
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -48,7 +82,6 @@ function Signin() {
             setEmailBorder("inputText")
             emailFlag = true
         }
-
         if(password===""){
             setPasswordError({color:"red", display:"block"})
             setPasswordBorder("inputError")
@@ -68,13 +101,12 @@ function Signin() {
         }
         
         if(emailFlag && passwordFlag){
-            alert("success")
+            return true
         }
         else{
             return false
         }
     }
-
     return (
 
         <div>
@@ -97,14 +129,8 @@ function Signin() {
                         <input value={password} onChange={e => {setPassword(e.target.value); setPasswordBorder("inputText"); setPasswordErrorMessage("")}} type="password" className={passwordBorder} placeholder="At least 6 characters"/>
 
                         <span style={passwordError}>{passwordErrorMessage}</span>
-                        <button onClick={signup}>Create your amazon account</button>
-                        <span style={{color:"black", marginLeft: "0px",  fontWeight:"bold", fontSize:"10px", marginTop:"0px", textAlign:"center"}}>Already a memmber? 
-                        <Link className="login"
-                            to="/login"
-                        >  Sign In</Link>
-                        </span>
-                </div>
-                    
+                        <button onClick={login}>Login</button>         
+                </div>             
             </div>
         </div>
     )

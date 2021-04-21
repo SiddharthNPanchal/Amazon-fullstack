@@ -13,7 +13,8 @@ function Promo() {
 
     const {products} = useContext(productContext);
     const {categories} = useContext(categoryContext)
-
+    let [random,setRandom] = useState(0);
+    
     const img = [img1, img2 , img3];
     let [cnt, setCnt] = useState(0);
    

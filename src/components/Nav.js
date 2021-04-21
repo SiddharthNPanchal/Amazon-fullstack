@@ -18,7 +18,7 @@ function Nav() {
 
     return (
         <div className="Nav">
-            <div class="grid-item" style={{fontSize:"smaller", textAlign:"left"}}>Hello
+            <div class="grid-item" style={{fontSize:"smaller", textAlign:"left"}}>Hello {sessionStorage.getItem("name")}
             </div>
             <div class="grid-item" onClick={()=> history.push("/bestsellers")}>Best Seller</div>
             <div class="grid-item">

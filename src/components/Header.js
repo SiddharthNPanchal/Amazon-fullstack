@@ -14,6 +14,7 @@ import data1 from "../data/data.js"
 
 function Header() {
 
+    // const [text, setText] = useState("")
     const {categories} = useContext(categoryContext);
     const cats = [];
     const history = useHistory();
@@ -31,6 +32,28 @@ function Header() {
         console.log('cats',cats);
     }, [categories]);
 
+    function text(){
+        if(sessionStorage.getItem("name")!=null){
+            return(
+                <div className="signInDiv">
+                    <Link className="link" to={"/dashboard"}>
+                    <span style={{fontSize:"10px"}}>Profile</span><br/>
+                    {/* <span>sign&nbsp;In</span> */}
+                    </Link> 
+                </div>
+            )
+        }
+        else{
+            return(
+                <div className="signInDiv">
+                    <Link className="link" to={"/signup"}>
+                    <span>Hello, </span><br/>
+                    <span>sign&nbsp;Up</span>
+                    </Link> 
+                </div>
+            )
+        }
+    }
     const searchHandle = (value) => {
         
         setCat(value)
@@ -60,12 +83,7 @@ function Header() {
             {/* {Hello, Sign Up, Return Orders} */}
             <div className="rightDiv">
             
-                <div className="signInDiv">
-                    <Link className="link" to={"/signup"}>
-                    <span>Hello, </span><br/>
-                    <span>sign&nbsp;In</span>
-                    </Link> 
-                </div>
+                {text()}
 
                 <div className="returnOrders">
                     <Link className="link" to={`/return-orders`}>

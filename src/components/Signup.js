@@ -25,7 +25,29 @@ function Signin() {
     let [repeatPasswordBorder, setRepeatPasswordBorder] = useState("inputText")
     let [repeatPasswordErrorMessage, setRepeatPasswordErrorMessage] = useState("")
     const signup = ()=>{
-        validate(   )
+        if(validate()){
+            fetch("http://localhost:8080/signup",{
+                method:"POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  body: JSON.stringify({
+                      name: name,
+                      email: email,
+                      password: password
+                  })
+            }).then(res=>{
+                if(res.status === 200){
+                    console.log(res)
+                    alert("Account creation successful")
+                    window.location.href = "http://localhost:3000/login";
+                }
+                else{
+                    alert("Email id already exists")
+                }
+            }).catch(err=>console.log(err))
+        }
     }
 
     const validate = () => {
@@ -98,26 +120,11 @@ function Signin() {
             repeatFlag = true
         }
         if(nameFlag && emailFlag && passwordFlag && repeatFlag){
-            fetch("http://localhost:5000/signup",{
-                method:"POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                  },
-                  body: JSON.stringify({
-                      name: name,
-                      email: email,
-                      password: password
-                  })
-            }).then(res=>{
-                if(res.status === 200){
-                    alert("Account creation successful")
-                    window.location.href = "http://localhost:3000/";
-                }
-                else{
-                    alert("Email id already exists")
-                }
-            }).catch(err=>console.log(err))
+            if(password === repeatPassword){
+                return true
+            }
+           alert("Both password must match");
+           return false;
         }
         else{
             return false    

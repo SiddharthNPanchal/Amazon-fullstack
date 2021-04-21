@@ -14,6 +14,7 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import storeDataContext from "./context/storeData"
 import storeProductContext from "./context/StoreProduct"
 import Login from "./components/Login"
+import Dashboard from "./components/Dashboard"
 import Footer from "./components/Footer"
 function App() {
 
@@ -23,8 +24,17 @@ function App() {
   let [cat, setCat] = useState("")
   let [prod, setProd] = useState("")
 
+  function signup(){
+    if(sessionStorage.getItem("name")==""){
+      return <Signup/>
+    }
+    else{
+      return <Dashboard/>
+    }
+  }
+
 useEffect (()=>{
-  fetch("http://localhost:5000/products",{
+  fetch("http://localhost:8080/products",{
   }).then(res=>{
     return res.json();
   }).then(data=>{
@@ -33,7 +43,7 @@ useEffect (()=>{
     // console.log("Products: "+ products);
   })
 
-  fetch("http://localhost:5000/categories").then(res=>{
+  fetch("http://localhost:8080/categories").then(res=>{
     return res.json();
   }).then(data=>{
     console.log(data.body);
@@ -62,22 +72,23 @@ useEffect (()=>{
         <Switch>
         <Route path="/products">
             <Products/>
-            {console.log("Hello00")}
         </Route>
         <Route path="/products-details">
             <ProductDetails/>
-            {console.log("Hello00")}
         </Route>
 
         <Route path="/bestsellers">
             <Bestsellerproducts/>
-            {console.log("Hello00")}
         </Route>
 
         <Route path="/signup">
             <Signup/>
-            {console.log("Hello00")}
         </Route>
+
+        <Route path="/dashboard">
+            <Dashboard/>
+        </Route>
+
         <Route path="/login"> 
         <Login/>
           </Route>
@@ -86,7 +97,7 @@ useEffect (()=>{
             
             <Nav/>
             <Promo/>
-            {/* <Bestseller/>  */}
+            <Bestseller/> 
             <Footer/>
         </Route>
         
