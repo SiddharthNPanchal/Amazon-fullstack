@@ -5,7 +5,7 @@ import "../styles/signin.css"
 function Dashboard() {
     function logout(){
         sessionStorage.clear();
-        window.location.href = "https://amazon-miniapi.herokuapp.com"
+        window.location.href = "https://amazonclonebysid.herokuapp.com"
     }
     return (
         <div>

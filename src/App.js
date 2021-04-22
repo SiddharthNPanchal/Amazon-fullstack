@@ -34,7 +34,7 @@ function App() {
   }
 
 useEffect (()=>{
-  fetch("https://amazon-miniapi.herokuapp.com/products").then(res=>{
+  fetch("https://amazonclonebysid.herokuapp.com/products").then(res=>{
     return res.json();
   }).then(data=>{
     console.log(data);
@@ -42,7 +42,7 @@ useEffect (()=>{
     console.log("Products: "+ products);
   })
 
-  fetch("https://amazon-miniapi.herokuapp.com/categories").then(res=>{
+  fetch("https://amazonclonebysid.herokuapp.com/categories").then(res=>{
     return res.json();
   }).then(data=>{
     console.log(data);

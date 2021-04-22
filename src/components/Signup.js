@@ -41,7 +41,7 @@ function Signin() {
                 if(res.status === 200){
                     console.log(res)
                     alert("Account creation successful")
-                    window.location.href = "https://amazon-miniapi.herokuapp.com";
+                    window.location.href = "https://amazonclonebysid.herokuapp.com";
                 }
                 else{
                     alert("Email id already exists")

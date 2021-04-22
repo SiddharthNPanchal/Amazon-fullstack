@@ -47,7 +47,7 @@ function Signin() {
                         sessionStorage.setItem("name",  res[0].name)
                         sessionStorage.setItem("email",  res[0].email)                    
                         alert(`Welcome, ${res[0].name}`)
-                        window.location.href = "https://amazon-miniapi.herokuapp.com"
+                        window.location.href = "https://amazonclonebysid.herokuapp.com"
                     }
                 
             }).catch(err=>alert(err))
