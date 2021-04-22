@@ -6,7 +6,6 @@ import logo from "../assets/amazon-logo.png"
 import "../styles/signin.css"
 function Signin() {
 
-    
     // Email
     let [email, setEmail] = useState("")
     let [emailError, setEmailError] = useState({color:"black", display:"none"})
@@ -21,7 +20,7 @@ function Signin() {
 
     const login = ()=>{
         if(validate()){
-            fetch("http://localhost:8080/login",{
+            fetch("https://amazon-miniapi.herokuapp.com/login",{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -32,27 +31,25 @@ function Signin() {
                       password: password
                   })
             }).then(res=>{
-                if(res.status==401){
-                    setLoginError(401)
-                    alert("True")
-                    return loginError
+                console.log(res)
+                if(res.status==200){
+                    return res.json()      
                 }
                 else{
-                    setLoginError(200)
-                    return res.json()
+                  setLoginError(401)
                 }
-                
             }).then(res=>{
-                if(res==401){
                     console.log(res)
-                }
-                else{
-                    window.location.href = "http://localhost:3000"
-                    sessionStorage.setItem("name",  res.body[0][0].name)
-                    sessionStorage.setItem("email",  res.body[0][0].email)                    
-                    console.log(sessionStorage.getItem("name"))
-                    alert(`Welcome, ${res.body[0][0].name}`)
-                }
+                    if(res==undefined){
+                        alert("Enter valid credentials")
+                    }
+                    else{
+                        sessionStorage.setItem("name",  res[0].name)
+                        sessionStorage.setItem("email",  res[0].email)                    
+                        alert(`Welcome, ${res[0].name}`)
+                        window.location.href = "http://localhost:3000"
+                    }
+                
             }).catch(err=>alert(err))
         }
     }

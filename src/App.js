@@ -34,20 +34,19 @@ function App() {
   }
 
 useEffect (()=>{
-  fetch("http://localhost:8080/products",{
-  }).then(res=>{
+  fetch("https://amazon-miniapi.herokuapp.com/products").then(res=>{
     return res.json();
   }).then(data=>{
-    console.log(data.body);
-    setProducts(data.body);
-    // console.log("Products: "+ products);
+    console.log(data);
+    setProducts(data);
+    console.log("Products: "+ products);
   })
 
-  fetch("http://localhost:8080/categories").then(res=>{
+  fetch("https://amazon-miniapi.herokuapp.com/categories").then(res=>{
     return res.json();
   }).then(data=>{
-    console.log(data.body);
-    setCategories(data.body);
+    console.log(data);
+    setCategories(data);
     // console.log("Categories: "+ categories);
   })
 

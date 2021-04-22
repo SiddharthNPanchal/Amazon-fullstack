@@ -26,7 +26,7 @@ function Signin() {
     let [repeatPasswordErrorMessage, setRepeatPasswordErrorMessage] = useState("")
     const signup = ()=>{
         if(validate()){
-            fetch("http://localhost:8080/signup",{
+            fetch("https://amazon-miniapi.herokuapp.com/signup",{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json'

@@ -20,7 +20,7 @@ function Nav() {
         <div className="Nav">
             <div class="grid-item" style={{fontSize:"smaller", textAlign:"left"}}>Hello {sessionStorage.getItem("name")}
             </div>
-            <div class="grid-item" onClick={()=> history.push("/bestsellers")}>Best Seller</div>
+            <div class="grid-item" onClick={()=> history.push("/bestsellers")} style={{cursor:"pointer"}}>Best Seller</div>
             <div class="grid-item">
              {
                  categories.map(cat =>{
