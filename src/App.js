@@ -18,7 +18,7 @@ import Dashboard from "./components/Dashboard"
 import Footer from "./components/Footer"
 function App() {
 
-  let [isLoading, setIsLoading] = useState(true)
+  // let [isLoading, setIsLoading] = useState(true)
   let [products, setProducts] = useState([]);
   let [categories, setCategories] = useState([]);
   let [cat, setCat] = useState("")
@@ -62,7 +62,7 @@ useEffect (()=>{
   return (
     
     <div className="App">
-      {isLoading ? null :  products ? <productContext.Provider value={{products}}>
+      <productContext.Provider value={{products}}>
         <categoryContext.Provider value={{categories}}>
         <storeDataContext.Provider value={[cat, setCat]}>
           <storeProductContext.Provider value={[prod, setProd]}>
@@ -93,7 +93,6 @@ useEffect (()=>{
           </Route>
           <Route path="/">
             <Header/>
-            
             <Nav/>
             <Promo/>
             <Bestseller/> 
@@ -107,7 +106,7 @@ useEffect (()=>{
         </storeDataContext.Provider>
       </categoryContext.Provider>
       </productContext.Provider>
-      :null} 
+      
       
     </div>
     
