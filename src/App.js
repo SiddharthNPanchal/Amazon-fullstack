@@ -55,7 +55,7 @@ useEffect (()=>{
   useEffect(()=>{
     if(products){
       console.log(products)
-      setIsLoading(false)
+      
     }
   },[products])
 
