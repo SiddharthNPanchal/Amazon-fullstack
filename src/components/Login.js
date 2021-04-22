@@ -47,7 +47,7 @@ function Signin() {
                         sessionStorage.setItem("name",  res[0].name)
                         sessionStorage.setItem("email",  res[0].email)                    
                         alert(`Welcome, ${res[0].name}`)
-                        window.location.href = "http://localhost:3000"
+                        window.location.href = "https://amazon-miniapi.herokuapp.com"
                     }
                 
             }).catch(err=>alert(err))

@@ -5,7 +5,7 @@ import "../styles/signin.css"
 function Dashboard() {
     function logout(){
         sessionStorage.clear();
-        window.location.href = "http://localhost:3000"
+        window.location.href = "https://amazon-miniapi.herokuapp.com"
     }
     return (
         <div>
